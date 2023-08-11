@@ -1,10 +1,10 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
-
+from settings import PATH_ITEMS_CSV_Error
 from src.item import Item, InstantiateCSVError
 import pytest
 
 
-
+items_csv_path_error = PATH_ITEMS_CSV_Error
 
 @pytest.fixture()
 def item():
@@ -36,4 +36,9 @@ class TestItem:
     def test_repr_item(self, item):
         assert repr(item) == "Item('Смартфон', 10000, 20)"
         assert str(item) == 'Смартфон'
+
+    def test_instantiate_from_csv(self):
+        with pytest.raises(FileNotFoundError):
+            Item.instantiate_from_csv(self.items_csv_path_error)
+
 
