@@ -1,7 +1,9 @@
 """Здесь надо написать тесты с использованием pytest для модуля item."""
+
+from src.item import Item, InstantiateCSVError
 import pytest
 
-from src.item import Item
+
 
 
 @pytest.fixture()
@@ -34,3 +36,4 @@ class TestItem:
     def test_repr_item(self, item):
         assert repr(item) == "Item('Смартфон', 10000, 20)"
         assert str(item) == 'Смартфон'
+
